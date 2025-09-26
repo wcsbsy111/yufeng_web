@@ -1,6 +1,6 @@
 # Yufeng Wang Personal Portfolio
 
-Welcome to the official portfolio site of Yufeng Wang — an Industrial Design student at ZJU. Web: https://wcsbsy111.github.io/yufeng_web/(https://wcsbsy111.github.io/yufeng_web/)
+Welcome to the official portfolio site of Yufeng Wang — an Industrial Design student at ZJU. Web: https://wcsbsy111.github.io/yufeng_web/
 
 ## 🌟 Overview
 
