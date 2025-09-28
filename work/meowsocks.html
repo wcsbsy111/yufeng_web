@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeowSocks</title>
+    <meta property="og:title" content="MeowSocks">
+    <meta property="og:locale" content="en_US">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            background-color: rgba(244, 242, 238, 1);
+            font-size: calc(1728vw / 1728);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .h1StylePTag {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        .h2StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        .h3StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        li,
+        p {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        a {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(229, 30, 243, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        figcaption {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 图片样式: 允许图片扩展至容器宽度（会放大小图） */
+        .demo-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(150, 120, 90, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        /* header 毛玻璃效果 - match site nav background */
+        .glassmorphismHeader {
+            background: rgba(255, 255, 255, 0.6);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            z-index: 99;
+        }
+
+        /* header inner content */
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; display:flex; align-items:center; justify-content:space-between; }
+    .nav-logo { display:flex; align-items:center; gap:0.6rem; color: rgba(51,51,51,1); font-weight:600; text-decoration:none; border-radius:1.5rem; background-color: rgba(240,240,240,1); padding:0.5rem 1.4rem; }
+
+        /* page layout: left TOC + main column */
+        .page-layout { max-width: 1200px; margin: 6rem auto 4rem; padding: 0 1.25rem; display:flex; gap:2rem; box-sizing:border-box; }
+        #page-toc { width:220px; flex:0 0 220px; position:sticky; top:5.2rem; align-self:flex-start; padding:1rem; border-radius:0.75rem; background:#ffffff; box-shadow:0 8px 24px rgba(0,0,0,0.04); }
+        #page-toc p { margin:0 0 .75rem 0; font-weight:700; }
+    #page-toc ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:4px; }
+    #page-toc a { color:#333; text-decoration:none; padding:6px 8px; display:block; border-radius:6px; }
+        #page-toc a:hover { background:#f6f6f6; }
+
+        .main-column { flex:1; }
+        .section-block { background: #fff; border-radius: 1rem; padding:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,0.03); margin-bottom:1.25rem; }
+        .section-block h2 { margin-top:0; }
+        section { scroll-margin-top: 6.2rem; }
+
+        /* 参数卡片样式 */
+        .param-card {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #c9a875;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .param-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: #030303;
+            margin-bottom: 1rem;
+        }
+
+        .param-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .param-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .param-name {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .param-value {
+            color: #888;
+        }
+
+        /* 代码区域样式 */
+        .code-section {
+            margin: 2rem 0;
+        }
+
+        pre {
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 视频容器样式 */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 比例 */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* 下载按钮样式 */
+        .download-btn {
+            display: inline-block;
+            background-color: #c9a875;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #b89865;
+            color: white;
+        }
+
+        /* 分隔线样式 */
+        .section-divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 3rem 0;
+        }
+        /* wrap right column content with About-like gray background */
+        .main-content {
+            background-color: rgba(249, 249, 249, 1);
+            padding: 2.5rem 2rem;
+            border-radius: 1.3rem;
+            /* ensure the container establishes a new block formatting context so it contains floats/absolutely positioned children */
+            display: flow-root;
+            /* fallback for older browsers */
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glassmorphismHeader" style="position: fixed; top: 0; left: 0; right: 0; width: 100%; padding: 0.6rem 0; box-sizing:border-box;">
+        <div class="header-inner">
+            <div class="nav-logo" aria-disabled="true">
+                <p class="h3StylePTag">MeowSocks</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-layout">
+        <nav id="page-toc">
+            <p>Contents</p>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#case-study">Case Study</a></li>
+                <li><a href="#market-research">Market</a></li>
+                <li><a href="#price-research">Price Research</a></li>
+                <li><a href="#location-research">Location</a></li>
+                <li><a href="#traffic-analysis">Traffic Analysis</a></li>
+                <li><a href="#interview">Interview</a></li>
+                <li><a href="#questionnaire">Questionnaire</a></li>
+                <li><a href="#sock-selection">Sock Selection</a></li>
+                <li><a href="#sales-strategy">Sales Strategy</a></li>
+                <li><a href="#design-plan">Design Plan</a></li>
+                <li><a href="#modeling">Modeling</a></li>
+                <li><a href="#sales">Sales</a></li>
+                <li><a href="#result">Result</a></li>
+                <li><a href="#reflection">Reflection</a></li>
+                <li><a href="#demonstration-video">Demonstration Video</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-column">
+            <div class="main-content">
+                <p class="h1StylePTag" style="margin: 0 0 2rem 0; font-size: 2.0rem;">Socks Pop-Up Store</p>
+
+                <div style="margin-bottom: 2rem;">
+                    <a href="../index.html#work" style="display: inline-flex; align-items: center; color: #c9a875; text-decoration: none;">← Back to Selected Works</a>
+                </div>
+
+                <section id="overview">
+                    <h2 style="margin: 0rem 0 1.2rem 0;">Overview</h2>
+                    <div class="project-card">
+                        <p>This is my first venture into commercializing a design project, transforming concepts into reality with immense satisfaction. The initiative centered on launching a pop-up store, "Socks with Cats," which aimed to merge fashion and playfulness to create a unique shopping experience.</p>
+                        <p>Key activities included conducting thorough market research to understand the Chinese sock market's dynamics, consumer preferences, and competitive strategies. The project involved strategic product selection, pricing, and promotional activities to engage our target audience effectively.</p>
+                        <p>The design was brought to life through a vibrant color scheme and a mascot, "Miao," enhancing brand identity. The execution encompassed on-site setup, daily operations, and adaptive strategies based on customer feedback, culminating in a successful commercial and creative endeavor.</p>
+                    </div>
+
+                    <!-- Case Study -->
+                    <h2 id="case-study" style="margin: 2.5rem 0 1rem 0;">Case Study</h2>
+                    <div class="project-card">
+                        <p>Representative case studies and inspirations.</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/1.png" alt="Case Study 1" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/2.png" alt="Case Study 2" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Market Research -->
+                    <h2 id="market-research" style="margin: 2.5rem 0 1rem 0;">Market Research</h2>
+                    <div class="project-card">
+                        <p>Market analysis and competitor overview.</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/3.png" alt="Market 1" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/4.png" alt="Market 2" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/5.png" alt="Market 3" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Price Research -->
+                    <h2 id="price-research" style="margin: 2.5rem 0 1rem 0;">Price Research</h2>
+                    <div class="project-card">
+                        <p>Pricing analysis to determine competitive price points.</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/6.png" alt="Price Research" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Location Research -->
+                    <h2 id="location-research" style="margin: 2.5rem 0 1rem 0;">Location Research</h2>
+                    <div class="project-card">
+                        <p>Analysis of optimal sales locations and channels.</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/7.png" alt="Location Research" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Traffic Analysis -->
+                    <h2 id="traffic-analysis" style="margin: 2.5rem 0 1rem 0;">Traffic Analysis</h2>
+                    <div class="project-card">
+                        <p>The peak foot traffic in the food court occurs from 11:30 to 12:30, during the lunch rush. There is a smaller evening peak, but it is much lower than at noon.</p>
+
+                        <p>We estimated the foot traffic around the pop-up store for 30 minutes from 11:30 to 12:00 and recorded the number of visitors entering the store and making purchases.</p>
+
+                        <ul>
+                            <li><strong>Total foot traffic:</strong> 686 people</li>
+                            <li><strong>Estimated male/female split:</strong> 429 men, 257 women</li>
+                            <li><strong>Visitors entering the store:</strong> 35</li>
+                            <li><strong>Successful sale:</strong> 1 transaction of 20 pairs</li>
+                        </ul>
+
+                        <p><em>Note:</em> Although foot traffic is highest during this period, customers tend to purchase after finishing their meals, so the purchase rate is relatively low at this time. The peak purchasing period is around 12:30–13:30, when foot traffic is lower but almost every visitor entering the store makes a purchase. Due to the scattered nature of this crowd, precise statistics for this period are not meaningful.</p>
+                    </div>
+
+                    <!-- Interview -->
+                    <h2 id="interview" style="margin: 2.5rem 0 1rem 0;">Interview</h2>
+                    <div class="project-card">
+                        <p>Key insights from stakeholder and user interviews.</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/8.png" alt="Interview 1" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/9.png" alt="Interview 2" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/10.png" alt="Interview 3" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Questionnaire -->
+                    <h2 id="questionnaire" style="margin: 2.5rem 0 1rem 0;">Questionnaire</h2>
+                    <div class="project-card">
+                        <p>Survey results and quantitative validation.</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/11.png" alt="Questionnaire 1" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/12.png" alt="Questionnaire 2" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/13.png" alt="Questionnaire 3" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/14.png" alt="Questionnaire 4" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Sock Selection -->
+                    <h2 id="sock-selection" style="margin: 2.5rem 0 1rem 0;">Sock Selection</h2>
+                    <div class="project-card">
+                        <p>Selection and categorization of sock styles for different target groups.</p>
+
+                        <h3 style="margin:0.8rem 0 0.4rem 0;">Woman's Style</h3>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/15.png" alt="Woman 1" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/16.png" alt="Woman 2" class="demo-image"></figure>
+
+                        <h3 style="margin:0.8rem 0 0.4rem 0;">Man's Style</h3>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/17.png" alt="Man 1" class="demo-image"></figure>
+
+                        <h3 style="margin:0.8rem 0 0.4rem 0;">Children's Socks</h3>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/18.png" alt="Children 1" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Sales Strategy -->
+                    <h2 id="sales-strategy" style="margin: 2.5rem 0 1rem 0;">Sales Strategy</h2>
+                    <div class="project-card">
+                        <p>Planned sales and promotion strategies.</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/19.png" alt="Sales Strategy" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Design Plan -->
+                    <h2 id="design-plan" style="margin: 2.5rem 0 1rem 0;">Design Plan</h2>
+                    <div class="project-card">
+                        <p>Design implementation plans and specifications.</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/21.png" alt="Design Plan 1" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/22.png" alt="Design Plan 2" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/23.png" alt="Design Plan 3" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/24.png" alt="Design Plan 4" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Modeling -->
+                    <h2 id="modeling" style="margin: 2.5rem 0 1rem 0;">Modeling</h2>
+                    <div class="project-card">
+                        <p>We used Rhino for 1:1 modeling to ensure accurate product dimensions and fit.</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/25.png" alt="Modeling" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Sales -->
+                    <h2 id="sales" style="margin: 2.5rem 0 1rem 0;">Sales</h2>
+                    <div class="project-card">
+                        <p>Sales execution assets and channels.</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/26.png" alt="Sales 1" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/27.png" alt="Sales 2" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/28.png" alt="Sales 3" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/29.png" alt="Sales 4" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/30.png" alt="Sales 5" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/31.png" alt="Sales 6" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Result -->
+                    <h2 id="result" style="margin: 2.5rem 0 1rem 0;">Result</h2>
+                    <div class="project-card">
+                        <p>We finally achieve income of over 2,500 yuan, profit up to 1,500 yuan.</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/36.png" alt="Result 1" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/37.png" alt="Result 2" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/38.png" alt="Result 3" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Reflection -->
+                    <h2 id="reflection" style="margin: 2.5rem 0 1rem 0;">Reflection</h2>
+                    <div class="project-card">
+                        <p>Lessons learned and future directions.</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/32.png" alt="Reflection 1" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/33.png" alt="Reflection 2" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/34.png" alt="Reflection 3" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow/35.png" alt="Reflection 4" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Demonstration Video -->
+                    <h2 id="demonstration-video" style="margin: 2.5rem 0 1rem 0;">Demonstration Video</h2>
+                    <div class="project-card">
+                        <video controls style="width:100%; max-width:100%; height:auto;">
+                            <source src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow_video.mp4" type="video/mp4">
+                            Your browser does not support the video tag. You can <a href="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/meow_video.mp4" target="_blank" rel="noopener noreferrer" style="color:#c9a875; text-decoration:none;">download the video here</a>.
+                        </video>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <div class="project-card" style="margin-top:0.5rem;">
+                        <p style="font-size:0.95rem; margin:0;">This project was collaboratively completed by the team.</p>
+                    </div>
+
+                    </div>
+
+                    </div>
+
+
+                </section>
+        </div>
+    </div>
+
+    <!-- 渲染outline -->
+    <script>
+        // Initialize DocumentOutline only if available
+        if (typeof DocumentOutline !== 'undefined') {
+            try {
+                let outline = new DocumentOutline({
+                    backgroundColor: '#2c2c2c',
+                    textColor: 'white',
+                    textColorLight: 'lightgrey',
+                    accentColor: '#858585',
+                    defaultOpen: true,
+                    width: '320px'
+                });
+                if (typeof d3 !== 'undefined') {
+                    d3.select(".outline-nav").style("z-index", "99");
+                }
+            } catch (e) {
+                console.warn('DocumentOutline init skipped', e);
+            }
+        }
+
+        // highlight.js auto-init if available
+        if (typeof hljs !== 'undefined' && typeof hljs.highlightAll === 'function') {
+            try { hljs.highlightAll(); } catch (e) { console.warn('hljs highlightAll failed', e); }
+        }
+
+        // 添加平滑滚动函数，考虑顶部导航栏高度
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                // 获取顶部导航栏高度
+                const headerHeight = document.querySelector('.glassmorphismHeader').offsetHeight;
+                // 计算元素距离顶部的位置，并减去导航栏高度和额外的偏移量
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerHeight - 20; // 额外20px的空间
+
+                // 平滑滚动
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+        }
+
+        // 处理URL中的锚点，页面加载时自动调整滚动位置
+        window.addEventListener('load', function () {
+            if (window.location.hash && window.location.hash.length > 1) {
+                const targetId = window.location.hash.substring(1);
+                setTimeout(function () {
+                    scrollToElement(targetId);
+                }, 300); // 延迟执行，确保页面完全加载
+            } else {
+                // 如果没有锚点，确保页面滚动到顶部
+                window.scrollTo(0, 0);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

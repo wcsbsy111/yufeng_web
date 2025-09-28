@@ -1,0 +1,681 @@
+/* =========================
+   基础样式
+   ========================= */
+:root {
+  /* responsive root font-size based on viewport width; clamps to a sensible range */
+  --min-font: 14; /* px */
+  --max-font: 18; /* px */
+  --design-width: 1200; /* design reference width in px */
+  font-size: clamp(var(--min-font)*1px, calc(0.8rem + 0.8vw), var(--max-font)*1px);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  background-color: rgba(244, 242, 238, 1);
+
+  max-width: 1200px;   /* 控制网页最大宽度 */
+  margin: 0 auto;      /* 居中网页内容 */
+  padding: 0 1.25rem;  /* 左右留点白边（相对于 root font） */
+  font-size: 1rem;     /* 使用 rem（由 :root font-size 控制） */
+}
+
+/* =========================
+   顶部导航栏
+   ========================= */
+.main-nav {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 1.1rem 0;
+  position: fixed; /* 固定在视口顶部，用户期望的行为 */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  box-sizing: border-box;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding: 0 1.25rem;
+}
+
+
+
+.nav-logo {
+  border-radius: 1.5rem;
+  background-color: rgba(240, 240, 240, 1);
+  padding: 0.5rem 1.4rem;
+  font-size: 1.5rem;
+  color: rgba(51, 51, 51, 1);
+  font-weight: 600;
+  margin: 0;
+}
+
+.nav-logo:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  border-radius: 1.5rem;
+  background-color: rgba(240, 240, 240, 1);
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  color: rgba(102, 102, 102, 1);
+  text-decoration: none;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+  transform: translateY(-2px);               /* 悬停时微微上移 */
+  cursor: pointer;
+}
+
+/* =========================
+   首页 Hero 区块
+   ========================= */
+.hero-section {
+  background-color: rgba(255, 255, 255, 1);
+  margin-top: 6.5rem;
+  padding: 0.9rem 2.3rem 0.9rem 4.8rem;
+  border-radius: 1.3rem; 
+}
+
+.hero-content {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 44%;
+}
+
+.hero-title,
+.hero-subtitle {
+  font-size: 3rem;
+  color: rgba(51, 51, 51, 1);
+  font-weight: 700;
+  margin: 0;
+}
+
+.hero-description {
+  color: rgba(102, 102, 102, 1);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.9rem;
+  margin-top: 1.6rem;
+}
+
+.hero-image-wrapper {
+  width: 56%;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: 1.3rem;
+  aspect-ratio: 2.2;
+  object-fit: contain;
+}
+
+.hero-image:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* =========================
+   About 区块
+   ========================= */
+#about {
+  scroll-margin-top: 0.7rem; 
+}
+
+.about-section {
+  background-color: rgba(249, 249, 249, 1);
+  margin-top: 6.5rem;
+  padding: 4.5rem 4.7rem 4.5rem 2.2rem;
+  border-radius: 1.3rem; /* 统一四角圆角 */
+}
+
+.about-content {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.about-text {
+  width: 75%;
+}
+
+.section-title {
+  border-radius: 1.5rem;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 0.75rem 1.5rem;
+  font-size: 2rem;
+  color: rgba(51, 51, 51, 1);
+  font-weight: 600;
+  display: inline-block;
+  margin: 0;
+}
+
+.about-description {
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 2.5rem 2rem;
+  margin-top: 2.5rem;
+}
+
+.about-paragraph {
+  font-size: 1.125rem;
+  color: rgba(102, 102, 102, 1);
+  line-height: 1.7rem;
+  margin: 0;
+}
+
+.about-welcome {
+  font-size: 1.4rem;
+  font-family: "Inknut Antiqua", serif;
+  color: rgba(102, 102, 102, 1);
+  text-align: center;
+  margin-top: 2.5rem;
+  margin-bottom: 0;
+
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.12rem solid rgba(102, 102, 102, 1);
+
+  width: 32ch;
+  animation: typing 8s steps(32) infinite, blinkCursor 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 32ch; }
+}
+
+@keyframes blinkCursor {
+  50% { border-color: transparent; }
+  100% { border-color: rgba(102, 102, 102, 1); }
+}
+
+.about-image-wrapper {
+  width: 25%;
+}
+
+.about-image {
+  width: 100%;
+  aspect-ratio: 0.74;
+  object-fit: contain;
+}
+
+/* =========================
+   Work 区块
+   ========================= */
+#work {
+  scroll-margin-top: 4.5rem; 
+}
+
+.work-section {
+  background: #fff;
+  max-width: 1200px;      /* 和 hero-section、contact-section 一致 */
+  padding: 3.5rem 3.5rem;     /* 内边距和其它section一致 */
+  border-radius: 1.3rem; /* 统一四角圆角 */
+}
+
+/* 当 body 有 all-visible 类（点击名字显示全部内容）时，调整 work/publication 的圆角为分割样式：
+   - work 只保留底部两个角圆角
+   - publication 只保留顶部两个角圆角
+*/
+body.all-visible .work-section {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 1.3rem;
+  border-bottom-right-radius: 1.3rem;
+}
+
+/* 在 all-visible 模式下，About 只保留上圆角，Contact 只保留下圆角 */
+body.all-visible .about-section {
+  border-top-left-radius: 1.3rem;
+  border-top-right-radius: 1.3rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.6rem;
+}
+
+.project-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 子节样式（Research / Practical） */
+.work-subsection {
+  margin-top: 30px;
+}
+
+.subsection-title {
+  font-size: 22px;
+  color: rgba(51,51,51,1);
+  margin: 0 0 18px 0;
+  font-weight: 600;
+}
+
+/* placeholder styles removed */
+
+.project-card {
+  border-radius: 1.3rem; /* unify to same radius as other sections */
+  background-color: rgba(249, 249, 249, 1);
+  padding: 1.6rem 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease; 
+  cursor: default;
+  overflow: hidden; /* ensure child images are clipped to this radius */
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.project-image {
+  width: 100%;
+  aspect-ratio: 1.5;
+  /* use contain so images are not cropped and preserve whole content */
+  object-fit: contain;
+  /* visible rounded corners on the image itself for consistent appearance */
+  border-radius: 0.9rem;
+  display: block;
+  background-color: rgba(255,255,255,1); /* ensure consistent background inside radius */
+  padding: 0.15rem; /* small inner padding to avoid edge touching */
+}
+
+/* Utility: uniform vertical spacing for main content sections */
+#about, .work-section, #publication, .contact-section {
+  margin-top: 3.5rem;
+}
+
+.project-title {
+  color: rgba(51, 51, 51, 1);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.8rem 0 0.7rem;
+}
+
+.project-description {
+  color: rgba(102, 102, 102, 1);
+  font-size: 1rem;
+  line-height: 1.6rem;
+  margin: 0;
+}
+
+.project-year {
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 0.25rem 1rem;
+  font-size: 0.875rem;
+  color: rgba(153, 153, 153, 1);
+  display: inline-block;
+  margin-top: 0.3rem;
+}
+
+/* =========================
+   Contact 区块
+   ========================= */
+.contact-section {
+  background-color: rgba(249, 249, 249, 1);
+  padding: 4.5rem 2.2rem;
+  border-radius: 1.3rem; /* 统一四角圆角 */
+
+}
+
+.contact-content {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.contact-info {
+  width: 50%;
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 2rem 2rem;
+}
+
+.contact-description {
+  color: rgba(102, 102, 102, 1);
+  font-size: 1.125rem;
+  line-height: 1.7rem;
+  margin: 0;
+}
+
+.contact-link {
+  border-radius: 1.5rem;
+  background-color: rgba(240, 240, 240, 1);
+  padding: 0.5rem 4.5rem;
+  font-size: 1.125rem;
+  color: rgba(51, 51, 51, 1);
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+
+  transition: color 0.2s, background 0.2s;
+}
+
+.contact-link:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+  transform: translateY(-2px);                /* 悬停时微微上移 */
+  cursor: pointer;
+}
+
+.contact-form {
+  width: 50%;
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-input {
+  border-radius: 1.25rem;
+  border: 1px solid rgba(221, 221, 221, 1);
+  padding: 1.25rem;
+  font-size: 1rem;
+  color: rgba(153, 153, 153, 1);
+}
+
+.form-textarea {
+  height: 8rem;
+  resize: none;
+}
+
+.submit-button {
+  border-radius: 1.5rem;
+  background-color: rgba(51, 51, 51, 1);
+  padding: 1rem 4.5rem;
+  color: rgba(255, 255, 255, 1);
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* =========================
+   页脚
+   ========================= */
+.footer {
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.copyright {
+  border-radius: 1.5rem;
+  background-color: rgba(240, 240, 240, 1);
+  padding: 0.5rem 2.625rem;
+  font-size: 0.875rem;
+  color: rgba(153, 153, 153, 1);
+  display: inline-block;
+  margin: 0;
+}
+
+/* =========================
+   响应式布局
+   ========================= */
+@media (max-width: 991px) {
+  .main-nav {
+    padding: 1.1rem 1.25rem;
+  }
+
+  .hero-section {
+    padding: 0.9rem 1.25rem;
+  }
+
+  .hero-content {
+    flex-direction: column;
+  }
+
+  .hero-text {
+    width: 100%;
+    margin-top: 2.5rem;
+  }
+
+  .hero-title,
+  .hero-subtitle {
+    font-size: 2.5rem;
+  }
+
+  .hero-image-wrapper {
+    width: 100%;
+    margin-top: 2.5rem;
+  }
+
+  .about-section {
+    padding: 4.5rem 1.25rem;
+  }
+
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-text {
+    width: 100%;
+  }
+
+  .about-image-wrapper {
+    width: 100%;
+    margin-top: 2.5rem;
+  }
+
+  .work-section {
+    padding: 0 1.25rem;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-section {
+    padding: 4.5rem 1.25rem;
+  }
+
+  .contact-content {
+    flex-direction: column;
+  }
+
+  .contact-info,
+  .contact-form {
+    width: 100%;
+  }
+
+  .contact-link {
+    padding: 0.5rem 1.25rem;
+  }
+
+  .submit-button {
+    padding: 1rem 1.25rem;
+  }
+}
+
+/* =========================
+   Emoji 特效
+   ========================= */
+.emoji {
+  position: fixed;
+  pointer-events: none; /* 不阻碍鼠标点击 */
+  font-size: 1.5rem;
+  user-select: none;
+  animation: floatUp 1.5s ease forwards;
+  opacity: 1;
+  z-index: 9999;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-2.5rem) scale(1.5);
+  }
+}
+
+/* =========================
+   单独显示圆角辅助类
+   ========================= */
+.show-alone {
+  border-radius: 1.3rem !important;
+  overflow: hidden;
+  margin-top: 6.5rem; /* 保持和hero-section一致 */
+  /* 不再需要单独设置margin-top */
+}
+
+.show-alone ~ .hero-section,
+.hero-section.show-alone {
+  border-radius: 1.3rem;
+  overflow: hidden;
+}
+
+/* =========================
+   流星雨背景特效
+   ========================= */
+.meteor-shower {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: -1; /* 让流星雨在所有内容后面 */
+}
+
+.meteor {
+  position: absolute;
+  width: 0.125rem;
+  height: 7.5rem;
+  background: linear-gradient(180deg, #fff 0%, #aeeaff 100%);
+  opacity: 0.7;
+  border-radius: 0.125rem;
+  filter: blur(0.03rem);
+  animation: meteor-fall 1.2s linear forwards;
+}
+
+@keyframes meteor-fall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scaleX(1) scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(calc(100vh + 7.5rem)) scaleX(1.2) scaleY(0.8);
+  }
+}
+
+/* =========================
+   Publication 区块
+   ========================= */
+.publication-section {
+  background-color: rgba(255, 255, 255, 1);
+  padding: 3.75rem 3.75rem;
+  /* 和其他 section 保持一致的上间距，确保视觉对齐 */
+  margin-top: 6.5rem;
+  border-radius: 1.3rem;
+}
+
+body.all-visible .publication-section {
+  border-top-left-radius: 1.3rem;
+  border-top-right-radius: 1.3rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  /* 与 work 连接时不需要额外上间距 */
+  /* 保持一定间距以免紧贴 work */
+  margin-top: 1.25rem;
+}
+
+body.all-visible .contact-section {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 1.3rem;
+  border-bottom-right-radius: 1.3rem;
+}
+
+/* 使导航锚点跳转时 Publication 与页面其它 section 对齐 */
+#publication {
+  scroll-margin-top: 4.5rem;
+}
+
+.publication-section .section-title {
+  margin-bottom: 1.25rem;
+}
+
+.pub-list {
+  display: grid;
+  grid-template-columns: 1fr; /* 每排一条 */
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.pub-item {
+  background: rgba(249, 249, 249, 1);
+  border-radius: 1.25rem;
+  padding: 1.25rem 1.375rem;
+}
+
+.pub-title {
+  font-size: 1.125rem;
+  color: rgba(51, 51, 51, 1);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.pub-authors {
+  margin: 0;
+  color: rgba(102, 102, 102, 1);
+  font-size: 0.875rem;
+}
+
+.pub-meta {
+  margin-top: 0.625rem;
+  display: inline-block;
+  font-size: 0.8125rem;
+  color: rgba(153, 153, 153, 1);
+  background: rgba(255,255,255,1);
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.875rem;
+}
+
+@media (max-width: 991px) {
+  .publication-section {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .pub-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Experience - GyFoam</title>
+    <meta property="og:title" content="Research Experience - GyFoam">
+    <meta property="og:locale" content="en_US">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            background-color: rgba(244, 242, 238, 1);
+            font-size: calc(1728vw / 1728);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .h1StylePTag {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        .h2StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        .h3StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        li,
+        p {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        a {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(229, 30, 243, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        figcaption {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 图片样式: 允许图片扩展至容器宽度（会放大小图） */
+        .demo-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(150, 120, 90, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        /* header 毛玻璃效果 - match site nav background */
+        .glassmorphismHeader {
+            background: rgba(255, 255, 255, 0.6);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            z-index: 99;
+        }
+
+        /* header inner content */
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; display:flex; align-items:center; justify-content:space-between; }
+    .nav-logo { display:flex; align-items:center; gap:0.6rem; color: rgba(51,51,51,1); font-weight:600; text-decoration:none; border-radius:1.5rem; background-color: rgba(240,240,240,1); padding:0.5rem 1.4rem; }
+
+        /* page layout: left TOC + main column */
+        .page-layout { max-width: 1200px; margin: 6rem auto 4rem; padding: 0 1.25rem; display:flex; gap:2rem; box-sizing:border-box; }
+        #page-toc { width:220px; flex:0 0 220px; position:sticky; top:5.2rem; align-self:flex-start; padding:1rem; border-radius:0.75rem; background:#ffffff; box-shadow:0 8px 24px rgba(0,0,0,0.04); }
+        #page-toc p { margin:0 0 .75rem 0; font-weight:700; }
+        #page-toc ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px; }
+        #page-toc a { color:#333; text-decoration:none; padding:8px 10px; display:block; border-radius:8px; }
+        #page-toc a:hover { background:#f6f6f6; }
+
+        .main-column { flex:1; }
+        .section-block { background: #fff; border-radius: 1rem; padding:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,0.03); margin-bottom:1.25rem; }
+        .section-block h2 { margin-top:0; }
+        section { scroll-margin-top: 6.2rem; }
+
+        /* 参数卡片样式 */
+        .param-card {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #c9a875;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .param-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: #030303;
+            margin-bottom: 1rem;
+        }
+
+        .param-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .param-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .param-name {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .param-value {
+            color: #888;
+        }
+
+        /* 代码区域样式 */
+        .code-section {
+            margin: 2rem 0;
+        }
+
+        pre {
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 视频容器样式 */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 比例 */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* 下载按钮样式 */
+        .download-btn {
+            display: inline-block;
+            background-color: #c9a875;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #b89865;
+            color: white;
+        }
+
+        /* 分隔线样式 */
+        .section-divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 3rem 0;
+        }
+        /* wrap right column content with About-like gray background */
+        .main-content {
+            background-color: rgba(249, 249, 249, 1);
+            padding: 2.5rem 2rem;
+            border-radius: 1.3rem;
+            /* ensure the container establishes a new block formatting context so it contains floats/absolutely positioned children */
+            display: flow-root;
+            /* fallback for older browsers */
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glassmorphismHeader" style="position: fixed; top: 0; left: 0; right: 0; width: 100%; padding: 0.6rem 0; box-sizing:border-box;">
+        <div class="header-inner">
+            <div class="nav-logo" aria-disabled="true">
+                <p class="h3StylePTag">GyFoam</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-layout">
+        <nav id="page-toc">
+            <p>Contents</p>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#fabrication-workflow">Workflow</a></li>
+                <li><a href="#morphing">Morphing</a></li>
+                <li><a href="#customizable-stiffness">Customizable Stiffness</a></li>
+                <li><a href="#project-significance">Project Significance</a></li>
+                <li><a href="#demonstration-video">Demonstration Video</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-column">
+            <div class="main-content">
+                <p class="h1StylePTag" style="margin: 0 0 2rem 0; font-size: 2.0rem;">A Fabrication Method Enabling Uniform Expansion for Foaming-driven Shaping and Customizable Stiffness</p>
+
+                <div style="margin-bottom: 2rem;">
+                    <a href="../index.html#work" style="display: inline-flex; align-items: center; color: #c9a875; text-decoration: none;">← Back to Selected Works</a>
+                </div>
+
+                <section id="overview">
+                    <h2 style="margin: 0rem 0 1.2rem 0;">Overview</h2>
+                    <div class="project-card">
+                        <p>I joined Guanyun Lab as an intern around April 2024, which marked the beginning of my research journey. Here, I delved into various fields such as material-driven design, soft robotics, and 4D printing. During this academic year, I contributed as the third author to a project titled GyFoam.</p>
+                        <p>GyFoam is a novel fabrication method that integrates foam material with lattice structures to achieve controlled and uniform expansion. This method enables high-quality forming in appearance and customizable stiffness in function, utilizing standard 3D printers, filaments, commercially available Thermo-Expandable Microspheres, and silicone. To achieve customizable stiffness, we explored two methods through experimentation: modifying material concentration and adjusting lattice structural parameters. Additionally, we proposed three shape control strategies for creating complex shapes: bending, wavy edges, and internal doming.</p>
+                        <p>We also developed a user-friendly design tool that allows users to construct lattice structures, preview basic deformations, and generate mold models for printing. Through a series of applications, we demonstrated GyFoam's practical usage in fabricating large objects, wearable products, enabling flexible interactions, and creating aesthetic designs.</p>
+                    </div>
+
+                    <h2 id="fabrication-workflow" style="margin: 3rem 0 1.2rem 0;">Fabrication Workflow</h2>
+                    <div class="project-card">
+                        <p>We propose a modular mold fabrication method that may involve iterative processes across these stages. Thus, we provide simple decision points where users can choose different workflows based on their needs.</p>
+
+                        <figure style="margin:0rem;">
+                            <img src="../GyFoam/FabricationWorkflow.jpg" alt="Fabrication Workflow" class="demo-image">
+                        </figure>
+                    </div>
+
+                    <!-- Morphing section: user-provided description and image -->
+                    <h2 id="morphing" style="margin: 2.5rem 0 1rem 0;">Morphing</h2>
+                    <div class="project-card">
+                        <p><strong>Bilayer-induced Bending</strong><br>
+                        This deformation strategy utilizes differential expansion between two layers: upon heat activation, the higher-concentration layer undergoes greater expansion, serving as the driving layer, while the lower-concentration layer acts as a restricting layer, resisting deformation and generating controlled bending moments. Our deformation library illustrates how the concentration of the driving layer influences the degree of bending.</p>
+
+                        <p><strong>Concentric-induced Wavy Edges</strong><br>
+                        We present a structure in which the inner ring has a lower composite concentration, while the outer ring has a higher concentration. During expansion, the outer ring is constrained and stretched by the inner ring, resulting in periodic wavy edges. By adjusting the composite concentrations and geometric dimensions, we can achieve wavy edges with varying amplitudes and wave counts.</p>
+
+                        <p><strong>Concentric-induced Internal Doming</strong><br>
+                        In contrast to wavy edges, internal doming is achieved by reversing the concentration distribution. The inner region, with its higher expansion capability, is constrained by the surrounding structure, preventing lateral expansion and instead forcing upward deformation into a vertical dome shape. Our library showcases various internal doming effects resulting from different concentration gradients, illustrating a diverse range of dome heights and shapes.</p>
+
+                        <figure style="margin:0rem;">
+                            <img src="../GyFoam/Stiffness&Morphing_MorphLibrary.jpg" alt="Morphing Library" class="demo-image">
+                        </figure>
+                    </div>
+
+                    <!-- Customizable Stiffness: interactive stiffness prediction tool -->
+                    <h2 id="customizable-stiffness" style="margin: 0.9rem 0 0.2rem 0;">Customizable Stiffness</h2>
+                        <!-- 交互式刚度预测工具 -->
+                        <div class="data-card" style="margin:0rem; padding: 0rem;">
+                            <p style="font-family: 'DM Serif Display', serif; font-size: 1.2rem; margin-bottom: 0.2rem;">Stiffness Prediction Calculator</p>
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1.5rem;">
+                                <div style="flex: 1; min-width: 200px;">
+                                    <label for="concentration" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">TEM (%)</label>
+                                    <input type="range" id="concentration" min="0" max="40" value="12" step="1" style="width: 100%;">
+                                    <div style="display: flex; justify-content: space-between; margin-top: 0.3rem;">
+                                        <span>>0%</span>
+                                        <span id="concentrationValue" style="font-weight: bold; color: #c9a875; background-color: #f8f2e5; padding: 0 8px; border-radius: 4px;">12%</span>
+                                        <span>40%</span>
+                                    </div>
+                                </div>
+
+                                <div style="flex: 1; min-width: 200px;">
+                                    <label for="cellSize" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Cell Size (mm)</label>
+                                    <input type="range" id="cellSize" min="5" max="20" value="8" step="0.5" style="width: 100%;">
+                                    <div style="display: flex; justify-content: space-between; margin-top: 0.3rem;">
+                                        <span>5mm</span>
+                                        <span id="cellSizeValue" style="font-weight: bold; color: #c9a875; background-color: #f8f2e5; padding: 0 8px; border-radius: 4px;">8</span>
+                                        <span>20mm</span>
+                                    </div>
+                                </div>
+
+                                <div style="flex: 1; min-width: 200px;">
+                                    <label for="wallThickness" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Wall Thickness (mm)</label>
+                                    <input type="range" id="wallThickness" min="1" max="5" value="2" step="0.1" style="width: 100%;">
+                                    <div style="display: flex; justify-content: space-between; margin-top: 0.3rem;">
+                                        <span>1mm</span>
+                                        <span id="wallThicknessValue" style="font-weight: bold; color: #c9a875; background-color: #f8f2e5; padding: 0 8px; border-radius: 4px;">2mm</span>
+                                        <span>5mm</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Edge Length 滑块 -->
+                                <div style="flex: 1; min-width: 200px;">
+                                    <label for="edgeLength" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Edge Length (mm)</label>
+                                    <input type="range" id="edgeLength" min="5" max="50" value="25" step="1" style="width: 100%;">
+                                    <div style="display: flex; justify-content: space-between; margin-top: 0.3rem;">
+                                        <span>5mm</span>
+                                        <span id="edgeLengthValue" style="font-weight: bold; color: #c9a875; background-color: #f8f2e5; padding: 0 8px; border-radius: 4px;">25mm</span>
+                                        <span>50mm</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="background-color: #f0f0f0; padding: 1rem; border-radius: 5px; text-align: center; margin-bottom: 1rem;">
+                                <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">Predicted Stiffness:</p>
+                                <p id="stiffnessResult" style="font-size: 1.5rem; font-weight: bold; color: #030303; margin: 0;">Calculating...</p>
+                            </div>
+
+                            <p style="font-size: 0.8rem; color: rgba(3,3,3,0.6); margin-top: 1rem;">Note: This model is based on experimental data fitting. The control sample, made of pure silicone, was a cube with each side measuring 25 mm.</p>
+                            <p style="font-size: 0.8rem; color: rgba(3,3,3,0.6)">Additionally, the cell size and wall thickness must satisfy the inequality relationship: Cell Size - 2 * Wall Thickness > 2.</p>
+                        </div>
+
+                    <!-- Project Significance -->
+                    <div class="project-card" style="margin-top:1.25rem;">
+                        <h2 id="project-significance" style="margin:0 0 0.5rem 0; font-family: 'DM Serif Display', serif;">Project Significance</h2>
+
+                        <p>The GyFoam project addresses several critical challenges in the use of expandable foam materials for interactive and personalized fabrication:</p>
+
+                        <p><strong>Solving uneven expansion issues:</strong> Traditional thermo-expandable foams often suffer from non-uniform expansion due to poor heat distribution, especially in large or complex geometries. By integrating foam with gyroid lattice structures, GyFoam ensures controlled and uniform expansion, significantly improving shape fidelity and structural quality.</p>
+
+                        <p><strong>Enabling customizable stiffness for personalization:</strong> The combination of foaming materials and lattice architectures allows independent tuning of mechanical stiffness by adjusting material concentration and structural parameters. This capability unlocks new opportunities for personalized products tailored to individual ergonomic and functional needs.</p>
+
+                        <p><strong>Bridging material science and interaction design:</strong> Beyond mechanical optimization, GyFoam expands the design space of soft fabrication by enabling programmable shape morphing, scalable manufacturing, and multi-functional applications — from large-scale furniture to wearable devices and interactive interfaces. This integration empowers designers and makers to prototype soft, adaptive, and responsive physical systems with greater control and creativity.</p>
+                    </div>
+
+                    <!-- Demonstration Video -->
+                    <h2 id="demonstration-video" style="margin: 2.5rem 0 1rem 0;">Demonstration Video</h2>
+                    <div class="project-card">
+                        <video controls style="width:100%; max-width:100%; height:auto;">
+                            <source src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/demonstration.mp4" type="video/mp4">
+                            Your browser does not support the video tag. You can <a href="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/demonstration.mp4" target="_blank" rel="noopener noreferrer" style="color:#c9a875; text-decoration:none;">download the video here</a>.
+                        </video>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <div class="project-card" style="margin-top:0.5rem;">
+                        <p style="font-size:0.95rem; margin:0;">For more information, please visit the project website: <a href="https://gyfoam.github.io/index.html" target="_blank" rel="noopener noreferrer" style="color: #c9a875; text-decoration: none;">https://gyfoam.github.io/index.html</a></p>
+                    </div>
+
+
+
+                        <!-- JavaScript 计算刚度 -->
+                        <script>
+                            (function(){
+                                const concentrationInput = document.getElementById('concentration');
+                                const cellSizeInput = document.getElementById('cellSize');
+                                const wallThicknessInput = document.getElementById('wallThickness');
+                                const edgeLengthInput = document.getElementById('edgeLength');
+
+                                const concentrationValue = document.getElementById('concentrationValue');
+                                const cellSizeValue = document.getElementById('cellSizeValue');
+                                const wallThicknessValue = document.getElementById('wallThicknessValue');
+                                const edgeLengthValue = document.getElementById('edgeLengthValue');
+                                const stiffnessResult = document.getElementById('stiffnessResult');
+
+                                function updateValues() {
+                                    concentrationValue.textContent = concentrationInput.value + '%';
+                                    cellSizeValue.textContent = cellSizeInput.value + 'mm';
+                                    wallThicknessValue.textContent = wallThicknessInput.value + 'mm';
+                                    edgeLengthValue.textContent = edgeLengthInput.value + 'mm';
+
+                                    const concentration = parseFloat(concentrationInput.value);
+                                    const cellSize = parseFloat(cellSizeInput.value);
+                                    const wallThickness = parseFloat(wallThicknessInput.value);
+                                    const a = parseFloat(edgeLengthInput.value);
+
+                                    const E = 1.03 * Math.pow(10, 5) * concentration + 9.428 * Math.pow(10, 4);
+                                    const thicknessToSizeRatio = wallThickness / cellSize;
+                                    const stiffness = 2.52 * Math.pow(thicknessToSizeRatio, 1.70) * E * a * Math.pow(10, -6);
+
+                                    const displayStiffness = Math.round(stiffness * 10) / 10;
+                                    stiffnessResult.innerHTML = `${displayStiffness} N/mm`;
+                                }
+
+                                updateValues();
+
+                                concentrationInput.addEventListener('input', updateValues);
+                                cellSizeInput.addEventListener('input', updateValues);
+                                wallThicknessInput.addEventListener('input', updateValues);
+                                edgeLengthInput.addEventListener('input', updateValues);
+                            })();
+                        </script>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- 渲染outline -->
+    <script>
+        // Initialize DocumentOutline only if available
+        if (typeof DocumentOutline !== 'undefined') {
+            try {
+                let outline = new DocumentOutline({
+                    backgroundColor: '#2c2c2c',
+                    textColor: 'white',
+                    textColorLight: 'lightgrey',
+                    accentColor: '#858585',
+                    defaultOpen: true,
+                    width: '320px'
+                });
+                if (typeof d3 !== 'undefined') {
+                    d3.select(".outline-nav").style("z-index", "99");
+                }
+            } catch (e) {
+                console.warn('DocumentOutline init skipped', e);
+            }
+        }
+
+        // highlight.js auto-init if available
+        if (typeof hljs !== 'undefined' && typeof hljs.highlightAll === 'function') {
+            try { hljs.highlightAll(); } catch (e) { console.warn('hljs highlightAll failed', e); }
+        }
+
+        // 添加平滑滚动函数，考虑顶部导航栏高度
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                // 获取顶部导航栏高度
+                const headerHeight = document.querySelector('.glassmorphismHeader').offsetHeight;
+                // 计算元素距离顶部的位置，并减去导航栏高度和额外的偏移量
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerHeight - 20; // 额外20px的空间
+
+                // 平滑滚动
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+        }
+
+        // 处理URL中的锚点，页面加载时自动调整滚动位置
+        window.addEventListener('load', function () {
+            if (window.location.hash && window.location.hash.length > 1) {
+                const targetId = window.location.hash.substring(1);
+                setTimeout(function () {
+                    scrollToElement(targetId);
+                }, 300); // 延迟执行，确保页面完全加载
+            } else {
+                // 如果没有锚点，确保页面滚动到顶部
+                window.scrollTo(0, 0);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanqing Inn</title>
+    <meta property="og:title" content="Sanqing Inn">
+    <meta property="og:locale" content="en_US">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            background-color: rgba(244, 242, 238, 1);
+            font-size: calc(1728vw / 1728);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .h1StylePTag {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        .h2StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        .h3StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        li,
+        p {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        a {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(229, 30, 243, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        figcaption {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 图片样式: 允许图片扩展至容器宽度（会放大小图） */
+        .demo-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(150, 120, 90, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        /* header 毛玻璃效果 - match site nav background */
+        .glassmorphismHeader {
+            background: rgba(255, 255, 255, 0.6);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            z-index: 99;
+        }
+
+        /* header inner content */
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; display:flex; align-items:center; justify-content:space-between; }
+    .nav-logo { display:flex; align-items:center; gap:0.6rem; color: rgba(51,51,51,1); font-weight:600; text-decoration:none; border-radius:1.5rem; background-color: rgba(240,240,240,1); padding:0.5rem 1.4rem; }
+
+        /* page layout: left TOC + main column */
+        .page-layout { max-width: 1200px; margin: 6rem auto 4rem; padding: 0 1.25rem; display:flex; gap:2rem; box-sizing:border-box; }
+        #page-toc { width:220px; flex:0 0 220px; position:sticky; top:5.2rem; align-self:flex-start; padding:1rem; border-radius:0.75rem; background:#ffffff; box-shadow:0 8px 24px rgba(0,0,0,0.04); }
+        #page-toc p { margin:0 0 .75rem 0; font-weight:700; }
+    #page-toc ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:4px; }
+    #page-toc a { color:#333; text-decoration:none; padding:6px 8px; display:block; border-radius:6px; }
+        #page-toc a:hover { background:#f6f6f6; }
+
+        .main-column { flex:1; }
+        .section-block { background: #fff; border-radius: 1rem; padding:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,0.03); margin-bottom:1.25rem; }
+        .section-block h2 { margin-top:0; }
+        section { scroll-margin-top: 6.2rem; }
+
+        /* 参数卡片样式 */
+        .param-card {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #c9a875;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .param-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: #030303;
+            margin-bottom: 1rem;
+        }
+
+        .param-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .param-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .param-name {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .param-value {
+            color: #888;
+        }
+
+        /* 代码区域样式 */
+        .code-section {
+            margin: 2rem 0;
+        }
+
+        pre {
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 视频容器样式 */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 比例 */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* 下载按钮样式 */
+        .download-btn {
+            display: inline-block;
+            background-color: #c9a875;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #b89865;
+            color: white;
+        }
+
+        /* 分隔线样式 */
+        .section-divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 3rem 0;
+        }
+        /* wrap right column content with About-like gray background */
+        .main-content {
+            background-color: rgba(249, 249, 249, 1);
+            padding: 2.5rem 2rem;
+            border-radius: 1.3rem;
+            /* ensure the container establishes a new block formatting context so it contains floats/absolutely positioned children */
+            display: flow-root;
+            /* fallback for older browsers */
+            overflow: auto;
+        }
+        /* row-images: force images to display in a single row on wide screens, wrap on narrow screens */
+        .row-images { display:flex; gap:1rem; align-items:flex-start; }
+        .row-images figure { flex:1; min-width:0; }
+        .row-images .demo-image { width:100%; height:auto; display:block; }
+        @media (max-width:720px) {
+            .row-images { flex-wrap:wrap; }
+            .row-images figure { min-width:45%; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glassmorphismHeader" style="position: fixed; top: 0; left: 0; right: 0; width: 100%; padding: 0.6rem 0; box-sizing:border-box;">
+                <div class="header-inner">
+            <div class="nav-logo" aria-disabled="true">
+                <p class="h3StylePTag">Sanqing Inn</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-layout">
+        <nav id="page-toc">
+            <p>Contents</p>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#business-layout">Business Layout</a></li>
+                <li><a href="#background">Background</a></li>
+                <li><a href="#brand-research">Restaurant Brand Research</a></li>
+                <li><a href="#desktop-survey">Desktop Survey</a></li>
+                <li><a href="#questionnaire">Questionnaire</a></li>
+                <li><a href="#interview">Interview</a></li>
+                <li><a href="#field-research">Field research</a></li>
+                <li><a href="#promotional-design">Promotional Design</a></li>
+                <li><a href="#touchpoint-design">Touchpoint Design</a></li>
+                <li><a href="#flow-design">Flow Design</a></li>
+                <li><a href="#story-network">Story Network</a></li>
+                <li><a href="#interaction-design">Interaction Design</a></li>
+                <li><a href="#menu-design">Menu Design</a></li>
+                <li><a href="#mini-program">Mini Program</a></li>
+                <li><a href="#mechanism">Mechanism</a></li>
+                <li><a href="#evaluation">Evaluation</a></li>
+                <li><a href="#feasibility-analysis">Feasibility analysis</a></li>
+                <li><a href="#opportunity-assessment">Opportunity assessment</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-column">
+            <div class="main-content">
+                <p class="h1StylePTag" style="margin: 0 0 2rem 0; font-size: 2.0rem;">Service Design of a Justice Online Themed Restaurant</p>
+
+                <div style="margin-bottom: 2rem;">
+                    <a href="../index.html#work" style="display: inline-flex; align-items: center; color: #c9a875; text-decoration: none;">← Back to Selected Works</a>
+                </div>
+
+                <section id="overview">
+                    <h2 style="margin: 0rem 0 1.2rem 0;">Overview</h2>
+                    <div class="project-card">
+                        <p>This project was developed as part of a collaborative service design course jointly offered by Zhejiang University and NetEase. Our team stood out with excellent performance throughout the project and was ultimately awarded internship offers from NetEase as recognition of our design capability.</p>
+                        <p>The project explores the creation of a Justice Online (逆水寒) themed restaurant, aiming to integrate immersive game elements into a real-world dining experience. Through in-depth user research, field studies, and service innovation strategies, we designed a space that merges storytelling, interactivity, and social engagement. The concept not only extends the influence of the Justice Online IP beyond the digital realm but also creates a new cultural and commercial ecosystem where fans, food lovers, and casual visitors can all enjoy a uniquely immersive experience.</p>
+                    </div>
+
+                    <!-- Business Layout -->
+                    <h2 id="business-layout" style="margin: 2.5rem 0 1rem 0;">Business Layout</h2>
+                    <div class="project-card">
+                        <p>Justice Online Business Layout</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/1.png" alt="Business Layout 1" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Background (3,4,5) -->
+                    <h2 id="background" style="margin: 2.5rem 0 1rem 0;">Background</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/3.png" alt="Background 3" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/4.png" alt="Background 4" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/5.png" alt="Background 5" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Restaurant Brand Research -->
+                    <h2 id="brand-research" style="margin: 2.5rem 0 1rem 0;">Restaurant Brand Research</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/5.png" alt="Brand 5" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/6.png" alt="Brand 6" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/7.png" alt="Brand 7" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/8.png" alt="Brand 8" class="demo-image"></figure>
+
+                        <h3 style="margin-top:1rem;">Brand Research Summary</h3>
+                        <ol>
+                            <li>Ordering UI Design: The ordering UI is beautifully designed, showcasing a fresh and simple style.</li>
+                            <li>Artistic Dish Naming: The dish categories are cleverly and artistically named, such as "Asking About Tea, Knowing the Eight Immortals" and "Tea-Crusted Pastries with Yummy Tea." These unique names make ordering more engaging for customers.</li>
+                            <li>Main Course Pricing and Variety: Meat dishes like potato beef brisket and Longjing roasted chicken generally cost 50-60 yuan per portion, while vegetarian dishes like Xishi tofu are around 30 yuan per portion. This pricing is within the generally acceptable price range.</li>
+                            <li>Extensive Snacks: A wide variety of snacks are available, priced around 20 yuan per portion. These snacks are typically small but exquisite, allowing customers to enjoy a variety of delicious snacks while savoring their main courses, enhancing their dining experience.</li>
+                            <li>Specialty Drinks and Snacks: Customers are offered a variety of unique drinks and snacks, enriching the dining experience.</li>
+                            <li>Optimized space layout: The restaurant's space layout has been carefully optimized and divided into different themed areas, creating a comfortable and private dining environment for customers and enhancing the overall dining experience.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Desktop Survey -->
+                    <h2 id="desktop-survey" style="margin: 2.5rem 0 1rem 0;">Desktop Survey</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/9.png" alt="Desktop Survey 9" class="demo-image"></figure>
+                        <h3 style="margin-top:1rem;">Desktop Survey Results</h3>
+                        <p>Gain a deep understanding of the "Against the Water" product, its business layout, user distribution, and various collaborations.</p>
+                        <p>Collect and organize various materials related to "Against the Water" scenes and collaborations.</p>
+                        <p>Explore various IP collaboration possibilities from various competing products, while also exploring the gaming, practical, and social benefits of such collaborations.</p>
+                        <p>Understand the importance of integrating offline collaborations with online gaming.</p>
+                    </div>
+
+                    <!-- Questionnaire -->
+                    <h2 id="questionnaire" style="margin: 2.5rem 0 1rem 0;">Questionnaire</h2>
+                    <div class="project-card row-images">
+                        <figure><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/10.png" alt="Questionnaire 10" class="demo-image"></figure>
+                        <figure><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/11.png" alt="Questionnaire 11" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Interview -->
+                    <h2 id="interview" style="margin: 2.5rem 0 1rem 0;">Interview</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/12.png" alt="Interview 12" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Field research -->
+                    <h2 id="field-research" style="margin: 2.5rem 0 1rem 0;">Field research</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/19.png" alt="Field 19" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/20.png" alt="Field 20" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Promotional Design -->
+                    <h2 id="promotional-design" style="margin: 2.5rem 0 1rem 0;">Promotional Design</h2>
+                    <div class="project-card">
+                        <p>The project is scheduled to open during the May Day holiday, capitalizing on peak tourism and consumption periods and expected to attract a large number of tourists. Data shows that domestic tourists reached 270 million during the 2023 May Day holiday, a 70.8% year-on-year increase, demonstrating a strong desire to travel and spend. A successful opening will lay a solid foundation for subsequent summer marketing activities and help build customer reputation and loyal customers. The promotional outline is designed as follows:</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/22.png" alt="Promotional 22" class="demo-image"></figure>
+
+                        <h3 style="margin-top:1rem;">Promotional Outline</h3>
+                        <p><strong>Online Promotion:</strong> Engage and promote the brand through player-submitted figurine designs, cosplay, fan art competitions, reposting prize draws, and online advertising, as well as visual materials and event information on official platforms.</p>
+                        <p><strong>Offline Promotion:</strong> Host restaurant opening ceremonies with prominent guests, place offline advertisements, display posters, establish targeted promotional locations, increase on-site interaction and media coverage, and enhance brand exposure.</p>
+                        <p><strong>In-store Promotion:</strong> Enhance the customer experience and interaction through photo check-in spots, live streams, game highlights, storytelling sessions, merchandise displays and exchanges, and NPC interactive encounters.</p>
+                        <p><strong>Post-customer experience:</strong> Collect customer feedback, organize check-in photos, encourage social media sharing, gather suggestions for improvements, and amplify promotional efforts through customer interaction and sharing.</p>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/23.png" alt="Promotional 23" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Touchpoint Design -->
+                    <h2 id="touchpoint-design" style="margin: 2.5rem 0 1rem 0;">Touchpoint Design</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/24.png" alt="Touchpoint 24" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Flow Design -->
+                    <h2 id="flow-design" style="margin: 2.5rem 0 1rem 0;">Flow Design</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/25.png" alt="Flow 25" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Story Network -->
+                    <h2 id="story-network" style="margin: 2.5rem 0 1rem 0;">Story Network</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/26.png" alt="Story 26" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/27.png" alt="Story 27" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Interaction Design -->
+                    <h2 id="interaction-design" style="margin: 2.5rem 0 1rem 0;">Interaction Design</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/28.png" alt="Interaction 28" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/29.png" alt="Interaction 29" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/30.png" alt="Interaction 30" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/31.png" alt="Interaction 31" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/32.png" alt="Interaction 32" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Menu Design (13,14 side-by-side) -->
+                    <h2 id="menu-design" style="margin: 2.5rem 0 1rem 0;">Menu Design</h2>
+                    <div class="project-card" style="display:flex; gap:1rem; flex-wrap:wrap;">
+                        <figure style="flex:1; min-width:240px;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/13.png" alt="Menu 13" class="demo-image"></figure>
+                        <figure style="flex:1; min-width:240px;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/14.png" alt="Menu 14" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Mini Program Design (15,16,17 same row) -->
+                    <h2 id="mini-program" style="margin: 2.5rem 0 1rem 0;">Mini Program Design</h2>
+                    <div class="project-card row-images">
+                        <figure><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/15.png" alt="Mini 15" class="demo-image"></figure>
+                        <figure><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/16.png" alt="Mini 16" class="demo-image"></figure>
+                        <figure><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/17.png" alt="Mini 17" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Mechanism -->
+                    <h2 id="mechanism" style="margin: 2.5rem 0 1rem 0;">Mechanism</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/35.png" alt="Mechanism 35" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/36.png" alt="Mechanism 36" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Evaluation -->
+                    <h2 id="evaluation" style="margin: 2.5rem 0 1rem 0;">Evaluation</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/37.png" alt="Evaluation 37" class="demo-image"></figure>
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/38.png" alt="Evaluation 38" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Feasibility analysis -->
+                    <h2 id="feasibility-analysis" style="margin: 2.5rem 0 1rem 0;">Feasibility analysis</h2>
+                    <div class="project-card">
+                        <h3>01 Market Analysis</h3>
+                        <p><strong>Target Market:</strong> Players and fans of Against the Water are the primary target group. These individuals are passionate about and loyal to the game and are willing to pay for related offline experiences. Store-goers and art enthusiasts are secondary target groups. Against the Water's more distinctive fashions and other items can attract these types of customers to check out.</p>
+                        <p><strong>Market Demand:</strong> There are currently some theme restaurants in the market, but restaurants featuring high-quality IPs like Against the Water are relatively scarce, and market demand is high.</p>
+
+                        <h3>02 Financial Analysis</h3>
+                        <p><strong>Startup Costs:</strong> Initial investment includes venue rental, renovation, equipment purchases, staff training, and initial operating capital. A detailed budget is required to ensure sufficient start-up capital and avoid capital constraints.</p>
+                        <p><strong>Revenue Forecast:</strong> Analyze the revenue data of similar theme restaurants and combine it with the fan base of Ni Shui Han to create a preliminary revenue forecast. Consider customer spending habits and spending power to establish a reasonable pricing strategy.</p>
+                        <p><strong>Cost Control:</strong> Control raw material procurement costs, employee wages, and operating costs through refined management. Leverage supply chain management and long-term partnerships to reduce procurement costs.</p>
+
+                        <h3>03 Operational Analysis</h3>
+                        <p><strong>Service and Management:</strong> High-quality service and management are key to success. Regularly assess employee authenticity to maintain the stability of the restaurant's ecosystem. Establish rational service processes and management mechanisms to ensure operational efficiency and customer satisfaction.</p>
+                        <p><strong>Marketing Strategy:</strong> Utilize a hybrid online and offline marketing strategy, promoting through social media, gaming communities, and fan groups. Regularly organize themed events, interactive experiences, and fan meet-and-greets to enhance customer loyalty and retention.</p>
+                    </div>
+
+                    <!-- Opportunity assessment -->
+                    <h2 id="opportunity-assessment" style="margin: 2.5rem 0 1rem 0;">Opportunity assessment</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/sanqing/43.png" alt="Opportunity 43" class="demo-image"></figure>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <div class="project-card" style="margin-top:0.5rem;">
+                        <p style="font-size:0.95rem; margin:0;">This project was collaboratively completed by the team.</p>
+                    </div>
+
+                </section>
+        </div>
+    </div>
+
+    <!-- 渲染outline -->
+    <script>
+        // Initialize DocumentOutline only if available
+        if (typeof DocumentOutline !== 'undefined') {
+            try {
+                let outline = new DocumentOutline({
+                    backgroundColor: '#2c2c2c',
+                    textColor: 'white',
+                    textColorLight: 'lightgrey',
+                    accentColor: '#858585',
+                    defaultOpen: true,
+                    width: '320px'
+                });
+                if (typeof d3 !== 'undefined') {
+                    d3.select(".outline-nav").style("z-index", "99");
+                }
+            } catch (e) {
+                console.warn('DocumentOutline init skipped', e);
+            }
+        }
+
+        // highlight.js auto-init if available
+        if (typeof hljs !== 'undefined' && typeof hljs.highlightAll === 'function') {
+            try { hljs.highlightAll(); } catch (e) { console.warn('hljs highlightAll failed', e); }
+        }
+
+        // 添加平滑滚动函数，考虑顶部导航栏高度
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                // 获取顶部导航栏高度
+                const headerHeight = document.querySelector('.glassmorphismHeader').offsetHeight;
+                // 计算元素距离顶部的位置，并减去导航栏高度和额外的偏移量
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerHeight - 20; // 额外20px的空间
+
+                // 平滑滚动
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+        }
+
+        // 处理URL中的锚点，页面加载时自动调整滚动位置
+        window.addEventListener('load', function () {
+            if (window.location.hash && window.location.hash.length > 1) {
+                const targetId = window.location.hash.substring(1);
+                setTimeout(function () {
+                    scrollToElement(targetId);
+                }, 300); // 延迟执行，确保页面完全加载
+            } else {
+                // 如果没有锚点，确保页面滚动到顶部
+                window.scrollTo(0, 0);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

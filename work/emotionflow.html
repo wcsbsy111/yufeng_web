@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmotionFlow</title>
+    <meta property="og:title" content="EmotionFlow">
+    <meta property="og:locale" content="en_US">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            background-color: rgba(244, 242, 238, 1);
+            font-size: calc(1728vw / 1728);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .h1StylePTag {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        .h2StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        .h3StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        li,
+        p {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        a {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(229, 30, 243, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        figcaption {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 图片样式: 允许图片扩展至容器宽度（会放大小图） */
+        .demo-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(150, 120, 90, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        /* header 毛玻璃效果 - match site nav background */
+        .glassmorphismHeader {
+            background: rgba(255, 255, 255, 0.6);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            z-index: 99;
+        }
+
+        /* header inner content */
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; display:flex; align-items:center; justify-content:space-between; }
+    .nav-logo { display:flex; align-items:center; gap:0.6rem; color: rgba(51,51,51,1); font-weight:600; text-decoration:none; border-radius:1.5rem; background-color: rgba(240,240,240,1); padding:0.5rem 1.4rem; }
+
+        /* page layout: left TOC + main column */
+        .page-layout { max-width: 1200px; margin: 6rem auto 4rem; padding: 0 1.25rem; display:flex; gap:2rem; box-sizing:border-box; }
+        #page-toc { width:220px; flex:0 0 220px; position:sticky; top:5.2rem; align-self:flex-start; padding:1rem; border-radius:0.75rem; background:#ffffff; box-shadow:0 8px 24px rgba(0,0,0,0.04); }
+        #page-toc p { margin:0 0 .75rem 0; font-weight:700; }
+    #page-toc ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:4px; }
+    #page-toc a { color:#333; text-decoration:none; padding:6px 8px; display:block; border-radius:6px; }
+        #page-toc a:hover { background:#f6f6f6; }
+
+        .main-column { flex:1; }
+        .section-block { background: #fff; border-radius: 1rem; padding:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,0.03); margin-bottom:1.25rem; }
+        .section-block h2 { margin-top:0; }
+        section { scroll-margin-top: 6.2rem; }
+
+        /* 参数卡片样式 */
+        .param-card {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #c9a875;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .param-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: #030303;
+            margin-bottom: 1rem;
+        }
+
+        .param-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .param-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .param-name {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .param-value {
+            color: #888;
+        }
+
+        /* 代码区域样式 */
+        .code-section {
+            margin: 2rem 0;
+        }
+
+        pre {
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 视频容器样式 */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 比例 */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* 下载按钮样式 */
+        .download-btn {
+            display: inline-block;
+            background-color: #c9a875;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #b89865;
+            color: white;
+        }
+
+        /* 分隔线样式 */
+        .section-divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 3rem 0;
+        }
+        /* wrap right column content with About-like gray background */
+        .main-content {
+            background-color: rgba(249, 249, 249, 1);
+            padding: 2.5rem 2rem;
+            border-radius: 1.3rem;
+            /* ensure the container establishes a new block formatting context so it contains floats/absolutely positioned children */
+            display: flow-root;
+            /* fallback for older browsers */
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glassmorphismHeader" style="position: fixed; top: 0; left: 0; right: 0; width: 100%; padding: 0.6rem 0; box-sizing:border-box;">
+            <div class="header-inner">
+                <div class="nav-logo" aria-disabled="true">
+                    <p class="h3StylePTag">EmotionFlow</p>
+                </div>
+            </div>
+    </div>
+
+    <div class="page-layout">
+        <nav id="page-toc">
+            <p>Contents</p>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#background">Background</a></li>
+                <li><a href="#design-goal">Design Goal</a></li>
+                <li><a href="#connection">Connection: Language & Ink</a></li>
+                <li><a href="#function-design">Function Design</a></li>
+                <li><a href="#reference">Reference</a></li>
+                <li><a href="#usage-scenarios">Usage Scenarios</a></li>
+                <li><a href="#sketch-iterate">Sketch & Iterate</a></li>
+                <li><a href="#actual-picture">Actual Picture</a></li>
+                <li><a href="#technical-path">Technical Path</a></li>
+                <li><a href="#algorithm-design">Algorithm Design</a></li>
+                <li><a href="#demonstration-video">Demonstration Video</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-column">
+            <div class="main-content">
+                <p class="h1StylePTag" style="margin: 0 0 2rem 0; font-size: 2.0rem;">Let emotion flow and take shape</p>
+
+                <div style="margin-bottom: 2rem;">
+                    <a href="../index.html#work" style="display: inline-flex; align-items: center; color: #c9a875; text-decoration: none;">← Back to Selected Works</a>
+                </div>
+
+                <section id="overview">
+                    <h2 style="margin: 0rem 0 1.2rem 0;">Overview</h2>
+                    <div class="project-card">
+                        <p>In Chinese, we often use the word “倾诉” — to speak out and share our emotions — and yet we also say emotions need an “出口,” a way to be poured out and released. EmotionFlow is built upon this metaphor, merging the acts of speaking and pouring into one seamless, embodied experience. It transforms the abstract process of emotional expression into a tangible ritual: users speak their feelings softly into the bottle, watching them gradually accumulate as rising “ink” — a visual metaphor for being heard. When ready, they gently tilt the bottle, allowing the ink to flow out, symbolizing emotional release and renewal. Through this integration of language, visualization, and physical action, EmotionFlow offers a quiet, intimate space for self-regulation — where emotions are not only expressed, but also seen, contained, and finally set free.</p>
+                    </div>
+
+                    <!-- Background -->
+                    <h2 id="background" style="margin: 2.5rem 0 1rem 0;">Background</h2>
+                    <div class="project-card">
+                        <p>In contemporary society, young people are facing an unprecedented dilemma of “emotional isolation.” Many of us struggle to voice certain feelings, which linger and accumulate deep inside without release. According to our survey, 41.2% of respondents said they “often feel anxious or emotionally low,” while 70% believe that current ways of emotional expression are “limited and ineffective.”</p>
+
+                        <p>Behind this phenomenon lies a combination of multiple factors — mounting social pressures and a growing imbalance in emotional expression mechanisms:</p>
+
+                        <p><strong>High-pressure living environment:</strong> The relentless competition in study, work, and life keeps individuals under prolonged emotional stress, creating an urgent need for a safe and effective outlet.</p>
+
+                        <p><strong>Challenges in emotional expression:</strong> Although the information age has improved communication efficiency, empathic capacity has declined. Fragmented expression on social media struggles to carry complex emotions, often leading to situations where “voices go unheard” and “feelings are misunderstood.”</p>
+
+                        <p>However, many traditional emotional release methods have inherent limitations:</p>
+
+                        <p><strong>High barriers to psychological counseling:</strong> Professional resources are scarce and expensive, and social stigma remains a significant deterrent.</p>
+
+                        <p><strong>Risks in social sharing:</strong> Some emotions are difficult to express openly, and concerns about privacy leaks often suppress genuine expression.</p>
+
+                        <p><strong>Lack of feedback in journaling:</strong> One-way writing lacks interactivity, making it hard to form a complete emotional processing loop.</p>
+
+                        <p>In response, we aim to combine scientific principles, artistic expression, and human-centered care to offer young people a new kind of emotional outlet — one that is both functional and ritualistic. It allows users to “speak their stories, even if their voices tremble,” and fills a crucial gap in the current market for emotional externalization and creative release.</p>
+                    </div>
+
+                    <!-- Design Goal -->
+                    <h2 id="design-goal" style="margin: 2.5rem 0 1rem 0;">Design Goal</h2>
+                    <div class="project-card">
+                        <p>Design goal visual</p>
+                        <figure style="margin:0rem;"><img src="../emotionflow/1.png" alt="Design Goal" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Inspiration & Reference removed per request -->
+
+                    <!-- Connection between language expression and ink -->
+                    <h3 id="connection" style="margin: 1.5rem 0 0.6rem 0;">Connection between language expression and ink</h3>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="../emotionflow/2.png" alt="Language & Ink" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Function Design -->
+                    <h2 id="function-design" style="margin: 2.5rem 0 1rem 0;">Function Design</h2>
+                    <div class="project-card">
+                        <p><strong>Confession Entry:</strong> Recording starts when the button is pressed, and the microphone captures the user’s voice.</p>
+                        <p><strong>Progress Visualization:</strong> The E-Ink display renders a real-time waveform of the recorded audio.</p>
+                        <p><strong>Data Upload:</strong> The voice data is sent to a local server for processing and analysis.</p>
+                        <p><strong>Emotional Release Ritual:</strong> Tilt gesture recognition (via MPU6050) allows the user to “pour out” their sadness through a symbolic motion.</p>
+                    </div>
+
+                    <!-- Reference (images in rows) -->
+                    <h2 id="reference" style="margin: 2.5rem 0 1rem 0;">Reference</h2>
+                    <div class="project-card">
+                        <p><strong>Color reference: clear and simple</strong></p>
+                        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                            <figure style="flex:1; margin:0;"><img src="../emotionflow/3.png" alt="Color ref 1" class="demo-image"></figure>
+                            <figure style="flex:1; margin:0;"><img src="../emotionflow/4.png" alt="Color ref 2" class="demo-image"></figure>
+                        </div>
+
+                        <p><strong>Form reference: organic, natural</strong></p>
+                        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                            <figure style="flex:1; margin:0;"><img src="../emotionflow/5.png" alt="Form ref 1" class="demo-image"></figure>
+                            <figure style="flex:1; margin:0;"><img src="../emotionflow/6.png" alt="Form ref 2" class="demo-image"></figure>
+                        </div>
+
+                        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                            <figure style="flex:1; margin:0;"><img src="../emotionflow/7.png" alt="Form ref 3" class="demo-image"></figure>
+                            <figure style="flex:1; margin:0;"><img src="../emotionflow/8.png" alt="Form ref 4" class="demo-image"></figure>
+                        </div>
+
+                        <p><strong>Residue reference: soft, flowing</strong></p>
+                        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                            <figure style="flex:1; margin:0;"><img src="../emotionflow/9.png" alt="Residue 1" class="demo-image"></figure>
+                            <figure style="flex:1; margin:0;"><img src="../emotionflow/10.png" alt="Residue 2" class="demo-image"></figure>
+                            <figure style="flex:1; margin:0;"><img src="../emotionflow/11.png" alt="Residue 3" class="demo-image"></figure>
+                        </div>
+                    </div>
+
+                    <!-- Usage Scenarios -->
+                    <h2 id="usage-scenarios" style="margin: 2.5rem 0 1rem 0;">Usage Scenarios</h2>
+                    <div class="project-card">
+                        <p>In the quiet nights spent alone in the dorm, during stressful afternoons filled with coursework, or in those low moments when there’s no one to talk to, EmotionFlow becomes your most gentle and silent listener.</p>
+
+                        <p>Simply speak softly into the bottle’s opening — the words you can’t say out loud and the emotions that go unheard are gently stored as rising ink inside the bottle. This visual response provides a sense of being heard and understood.</p>
+
+                        <p>When you’re ready to let go, tilt the bottle slowly onto the screen. As the ink drips down, ripples and swimming fish appear, symbolizing the release and rebirth of your emotions. This is more than just expression — it’s a metaphorical ritual of healing.</p>
+
+                        <p>Whether as a daily self-regulation habit, a moment of reflection before sleep, or a tool for emotional management, EmotionFlow offers a quiet, uninterrupted way to express yourself — heard through words, comforted through visuals, and released through motion.</p>
+
+                        <figure style="margin:0rem;"><img src="../emotionflow/12.png" alt="Usage Scenario" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Sketch and Iterate -->
+                    <h2 id="sketch-iterate" style="margin: 2.5rem 0 1rem 0;">Sketch & Iterate</h2>
+                    <div class="project-card">
+                        <p>In terms of model design, we wanted to provide users with an undisturbed conversation experience while also providing a comfortable grip. Below is a draft of our iterations of the design.</p>
+                        <figure style="margin:0rem;"><img src="../emotionflow/13.png" alt="Sketch" class="demo-image"></figure>
+                        <p>The rightmost image below is the pouring bottle model obtained by fusing two reference models and the manuscript.</p>
+                        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                            <figure style="flex:1; margin:0;"><img src="../emotionflow/14.png" alt="Fusion 1" class="demo-image"></figure>
+                            <figure style="flex:1; margin:0;"><img src="../emotionflow/15.png" alt="Fusion 2" class="demo-image"></figure>
+                        </div>
+                    </div>
+
+                    <!-- Actual Picture -->
+                    <h2 id="actual-picture" style="margin: 2.5rem 0 1rem 0;">Actual Picture</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="../emotionflow/16.png" alt="Actual" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Technical Path -->
+                    <h2 id="technical-path" style="margin: 2.5rem 0 1rem 0;">Technical Path</h2>
+                    <div class="project-card">
+                        <figure style="margin:0rem;"><img src="../emotionflow/17.png" alt="Technical" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Algorithm Design -->
+                    <h2 id="algorithm-design" style="margin: 2.5rem 0 1rem 0;">Algorithm Design</h2>
+                    <div class="project-card">
+                        <p>For more ideas on how to implement motion constraints, you can read the article <a href="https://zalo.github.io/blog/constraints/" target="_blank" rel="noopener noreferrer" style="color:#c9a875; text-decoration:none;">https://zalo.github.io/blog/constraints/</a>, which is very helpful. To experience the innovative algorithmic approach to water simulation, visit <a href="https://popcornovo.github.io/game.html" target="_blank" rel="noopener noreferrer" style="color:#c9a875; text-decoration:none;">https://popcornovo.github.io/game.html</a>. The core idea behind creating undulating motion in the mesh lies in the construction of "links." Below is some of the core code. By applying a "bottom" texture to your mesh, and then severing and reconstructing the links, you'll create a sense of crystal-clear water.</p>
+                        <figure style="margin:0rem;"><img src="../emotionflow/18.png" alt="Algorithm 1" class="demo-image"></figure>
+
+                        <p>For the uncertainty simulation of ink and wash, we used the idea of ​​"turbulence displacement" + "object grouping". The former is used to simulate the diffusion of the simulation (the turbulence texture intensity is mapped to the transparency of the circular ink droplets), and the latter is used to simulate the large diffusion of ink when entering the water.</p>
+                        <figure style="margin:0rem;"><img src="../emotionflow/19.png" alt="Algorithm 2" class="demo-image"></figure>
+                    </div>
+
+                    <!-- Demonstration Video -->
+                    <h2 id="demonstration-video" style="margin: 2.5rem 0 1rem 0;">Demonstration Video</h2>
+                    <div class="project-card">
+                        <video controls style="width:100%; max-width:100%; height:auto;">
+                            <source src="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/emotionflow.mp4" type="video/mp4">
+                            Your browser does not support the video tag. You can <a href="https://yufengweb.oss-cn-hangzhou.aliyuncs.com/emotionflow.mp4" target="_blank" rel="noopener noreferrer" style="color:#c9a875; text-decoration:none;">download the video here</a>.
+                        </video>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <div class="project-card" style="margin-top:0.5rem;">
+                        <p style="font-size:0.95rem; margin:0;">This project was collaboratively completed by the team.</p>
+                    </div>
+
+                    </div>
+
+                    </div>
+
+
+                </section>
+        </div>
+    </div>
+
+    <!-- 渲染outline -->
+    <script>
+        // Initialize DocumentOutline only if available
+        if (typeof DocumentOutline !== 'undefined') {
+            try {
+                let outline = new DocumentOutline({
+                    backgroundColor: '#2c2c2c',
+                    textColor: 'white',
+                    textColorLight: 'lightgrey',
+                    accentColor: '#858585',
+                    defaultOpen: true,
+                    width: '320px'
+                });
+                if (typeof d3 !== 'undefined') {
+                    d3.select(".outline-nav").style("z-index", "99");
+                }
+            } catch (e) {
+                console.warn('DocumentOutline init skipped', e);
+            }
+        }
+
+        // highlight.js auto-init if available
+        if (typeof hljs !== 'undefined' && typeof hljs.highlightAll === 'function') {
+            try { hljs.highlightAll(); } catch (e) { console.warn('hljs highlightAll failed', e); }
+        }
+
+        // 添加平滑滚动函数，考虑顶部导航栏高度
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                // 获取顶部导航栏高度
+                const headerHeight = document.querySelector('.glassmorphismHeader').offsetHeight;
+                // 计算元素距离顶部的位置，并减去导航栏高度和额外的偏移量
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerHeight - 20; // 额外20px的空间
+
+                // 平滑滚动
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+        }
+
+        // 处理URL中的锚点，页面加载时自动调整滚动位置
+        window.addEventListener('load', function () {
+            if (window.location.hash && window.location.hash.length > 1) {
+                const targetId = window.location.hash.substring(1);
+                setTimeout(function () {
+                    scrollToElement(targetId);
+                }, 300); // 延迟执行，确保页面完全加载
+            } else {
+                // 如果没有锚点，确保页面滚动到顶部
+                window.scrollTo(0, 0);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
